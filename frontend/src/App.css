@@ -1,0 +1,210 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.setup-container,
+.result-container {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+h1 {
+  color: #1a237e;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+}
+
+.start-btn,
+.next-btn,
+.restart-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.start-btn:hover,
+.next-btn:hover,
+.restart-btn:hover {
+  background: #1565c0;
+}
+
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  box-sizing: border-box;
+  /* Ensure padding doesn't affect total width */
+}
+
+/* Adjust Test Interface to prevent overlap with footer */
+.test-interface {
+  width: 100%;
+  max-width: 900px;
+  padding-bottom: 80px;
+  /* Space for the fixed footer */
+  box-sizing: border-box;
+}
+
+.nav-btn {
+  flex: 0 1 200px;
+  /* Max width 200px, but shrink if needed */
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:hover {
+  background: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn.prev-btn {
+  background: white;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+}
+
+.nav-btn.prev-btn:hover {
+  background: #e3f2fd;
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #ccc;
+  color: #999;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin: 30px 0;
+}
+
+.stat-card {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+
+.stat-card.correct {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.stat-card.wrong {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.stat-card.unattempted {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.score-value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #1a237e;
+}
+
+.score-value .total-marks {
+  font-size: 1.5rem;
+  color: #757575;
+  font-weight: 400;
+}
+
+/* Rank Card Styles */
+.rank-card {
+  margin: 20px 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #bbdefb;
+}
+
+.rank-range {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0d47a1;
+  margin: 10px 0;
+}
+
+.rank-band {
+  font-weight: 600;
+  color: #1565c0;
+  font-size: 1.1rem;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: #757575;
+  margin-top: 8px;
+}
+
+.loading {
+  font-size: 1.5rem;
+  color: #666;
+}
