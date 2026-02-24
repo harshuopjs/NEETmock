@@ -5,3 +5,5 @@ pdfplumber
 pymupdf
 Pillow
 python-multipart
+gunicorn
+pydantic-settings

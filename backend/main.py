@@ -9,15 +9,32 @@ import os
 from typing import List, Optional
 from question_loader import load_questions_from_text
 
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+    FRONTEND_URL: str = "http://localhost:5173"
+    DATABASE_URL: str = "sqlite:///./neet.db"
+
+    class Config:
+        env_file = ".env"
+
+settings = Settings()
+
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="ESHA's NEET 2026")
 
 # CORS Middleware
+origins = [
+    settings.FRONTEND_URL,
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all origins for dev
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

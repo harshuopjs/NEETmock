@@ -5,6 +5,8 @@ import Timer from './components/Timer';
 import Result from './components/Result';
 import './App.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 function App() {
   const [gameState, setGameState] = useState('setup'); // setup, test, result
   const [testConfig, setTestConfig] = useState(null);
@@ -26,12 +28,12 @@ function App() {
     setTestConfig(config);
     try {
       // 1. Fetch Questions
-      const qResponse = await fetch(`http://localhost:8000/api/questions?subject=${config.subject}&duration=${config.duration}`);
+      const qResponse = await fetch(`${API_BASE_URL}/api/questions?subject=${config.subject}&duration=${config.duration}`);
       const qData = await qResponse.json();
       setQuestions(qData);
 
       // 2. Start Session on Backend
-      const sResponse = await fetch('http://localhost:8000/api/start-test', {
+      const sResponse = await fetch(`${API_BASE_URL}/api/start-test`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ duration: config.duration, subject: config.subject })
@@ -80,7 +82,7 @@ function App() {
   const syncStatus = async () => {
     if (!sessionId) return;
     try {
-      const response = await fetch(`http://localhost:8000/api/test-status/${sessionId}`);
+      const response = await fetch(`${API_BASE_URL}/api/test-status/${sessionId}`);
       if (response.ok) {
         const data = await response.json();
         setGlobalTimeLeft(Math.floor(data.remaining_exam_seconds));
@@ -133,7 +135,7 @@ function App() {
   const updateBackendIndex = async (newIndex) => {
     if (!sessionId) return;
     try {
-      await fetch(`http://localhost:8000/api/update-question-index?session_id=${sessionId}&new_index=${newIndex}`, { method: 'POST' });
+      await fetch(`${API_BASE_URL}/api/update-question-index?session_id=${sessionId}&new_index=${newIndex}`, { method: 'POST' });
       // Reset local question timer visual immediately to feel responsive
       setQuestionTimeLeft(60);
       syncStatus(); // Sync to get exact server time

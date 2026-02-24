@@ -43,7 +43,7 @@ const QuestionCard = ({ question, selectedOption, onSelectOption }) => {
                 <p className="question-text">{question_text}</p>
                 {image_path && (
                     <div className="question-image">
-                        <img src={`http://localhost:8000${image_path}`} alt="Question Diagram" />
+                        <img src={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}${image_path}`} alt="Question Diagram" />
                     </div>
                 )}
             </div>
