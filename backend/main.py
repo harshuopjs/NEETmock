@@ -12,7 +12,7 @@ from question_loader import load_questions_from_text
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    FRONTEND_URL: str = "http://localhost:5173"
+    FRONTEND_URL: str = "https://nee-tmock.vercel.app/"
     DATABASE_URL: str = "sqlite:///./neet.db"
 
     class Config:
@@ -28,8 +28,8 @@ app = FastAPI(title="ESHA's NEET 2026")
 # CORS Middleware
 origins = [
     settings.FRONTEND_URL,
-    "http://localhost:5173",
-    "http://localhost:3000",
+    "https://nee-tmock.vercel.app/",
+    "https://nee-tmock.vercel.app/",
 ]
 
 app.add_middleware(
